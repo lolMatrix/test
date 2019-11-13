@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+	<meta charset="UTF-8">
+	<title>Сокращатель ссылок</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <p id="shortLink"></p>
+        <form id="short">
+            <input type="text" id="link">
+            <button type="submit">Сократить</button>
+        </form>
+        
+        <br/>
+        <p>Админка</p>
+        <form id="admin" action="enter.php" method="get">
+            <input type="text" name="login" required>
+            <input type="text" name="pass" required>
+            <button type="submit">Войти</button>
+        </form>
+        
+        <script>
+            $("#short").submit(function (e){
+            
+            var name = $("#link").val();
+            console.log(name);
+                
+            name = name.replace(/https:\/\//ig, '');
+            
+            
+            $.get("short.php", {link: name}, function(data){
+                $('#shortLink').empty();
+                $('#shortLink').append(data);
+                console.log(data);
+            });
+             return false;
+            
+        });
+        </script>
+    </body>
+</html>

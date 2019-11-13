@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule ^.*r/(.*)$ redirect.php?r=$1
+RewriteRule ^.*admin enter.php?r=$1
